@@ -2,12 +2,15 @@ name: Gradle Test
 
 on:
   push:
-    tags:
-      - '*'
-      - '**'
+    branches:
+      - *
+  pull_request:
+    branches:
+      - *
+
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,8 +24,8 @@ jobs:
       with:
         java-version: '8'
         distribution: 'adopt'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        server-id: github
+        settings-path: ${{ github.workspace }}
 
-    - name: Test with Gradle
+    - name: Test
       run: gradle test
