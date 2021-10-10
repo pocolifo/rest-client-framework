@@ -1,5 +1,8 @@
 # Pocolifo's REST Client Framework
+
 Java framework for making REST clients
+
+![testing](https://github.com/pocolifo/rest-client-framework/actions/workflows/test.yml/badge.svg)
 
 ---
 
