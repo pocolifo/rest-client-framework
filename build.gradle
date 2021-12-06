@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'com.pocolifo'
@@ -22,3 +23,33 @@ test {
     useJUnitPlatform()
 }
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            pom {
+                name = 'REST Client Framework'
+                description = 'Java framework for making REST clients'
+                artifactId = 'rest-client-framework'
+
+                licenses {
+                    license {
+                        name = 'Mozilla Public License 2.0'
+                        url = 'https://www.mozilla.org/en-US/MPL/2.0/'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'youngermax'
+                    }
+                }
+            }
+
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
