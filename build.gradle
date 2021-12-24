@@ -13,10 +13,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
-    implementation 'com.google.code.gson:gson:2.8.8'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 test {
@@ -30,6 +30,7 @@ publishing {
                 name = 'REST Client Framework'
                 description = 'Java framework for making REST clients'
                 artifactId = 'rest-client-framework'
+                version = System.getenv("RELEASE_VERSION")
 
                 licenses {
                     license {
@@ -45,11 +46,25 @@ publishing {
                 }
             }
 
-            from components.java
+            from components['java']
         }
     }
 
     repositories {
-        mavenLocal()
+        repositories {
+            maven {
+                url System.getenv("REPO_URL")
+                name 'pocolifo'
+
+                credentials {
+                    username = System.getenv("REPO_USERNAME")
+                    password = System.getenv("REPO_PASSWORD")
+                }
+
+                authentication {
+                    basic(BasicAuthentication)
+                }
+            }
+        }
     }
 }
