@@ -30,7 +30,7 @@ publishing {
                 name = 'REST Client Framework'
                 description = 'Java framework for making REST clients'
                 artifactId = 'rest-client-framework'
-                version = System.getenv("RELEASE_VERSION")
+                version = project.version
 
                 licenses {
                     license {
@@ -51,19 +51,17 @@ publishing {
     }
 
     repositories {
-        repositories {
-            maven {
-                url System.getenv("REPO_URL")
-                name 'pocolifo'
+        maven {
+            url System.getenv("REPO_URL")
+            name 'pocolifo'
 
-                credentials {
-                    username = System.getenv("REPO_USERNAME")
-                    password = System.getenv("REPO_PASSWORD")
-                }
+            credentials {
+                username = System.getenv("REPO_USERNAME")
+                password = System.getenv("REPO_PASSWORD")
+            }
 
-                authentication {
-                    basic(BasicAuthentication)
-                }
+            authentication {
+                basic(BasicAuthentication)
             }
         }
     }

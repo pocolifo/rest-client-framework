@@ -42,7 +42,6 @@ public class ResponseProcessor {
                 } else if (fieldType.equals(LIST_CLASS)) {
                     field.set(inst, header);
                 } else {
-
                     if (int.class.equals(fieldType)) {
                         field.setInt(inst, Integer.parseInt(h));
                     } else if (double.class.equals(fieldType)) {
@@ -54,7 +53,6 @@ public class ResponseProcessor {
                     } else if (long.class.equals(fieldType)) {
                         field.setLong(inst, Long.parseLong(h));
                     }
-
                 }
             }
         }
