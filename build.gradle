@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.pocolifo'
-version '1.3.2'
+version '1.3.3'
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
